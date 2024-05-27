@@ -32,14 +32,16 @@ class OfferRepositoryImpl(
             var offerResponse = emptyList<OfferResponse>()
             try {
                 offerResponse = apiServices.getOfferList().offers
+                dataBase.offer_dao().insertOffer(mapper.offerResponseToOfferEntity(offerResponse))
             }
             catch (e:Exception)
             {
                 Log.d("TAG", "getListOfOffers: Internet connection is not available")
             }
 
-            dataBase.offer_dao().insertOffer(mapper.offerResponseToOfferEntity(offerResponse))
+
             val offer = mapper.offerEntityToOfferModel(dataBase.offer_dao().getAllOffer())
+            Log.d("TAG", "getListOfOffers: ")
             _offer_list.postValue(offer)
         }
 

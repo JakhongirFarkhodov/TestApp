@@ -15,7 +15,7 @@ import com.example.testapp.presentation.viewmodel.OfferViewModelFactory
 class MainActivity : AppCompatActivity() {
 
     private val offerFactory by lazy {
-        OfferViewModelFactory(this)
+        OfferViewModelFactory(application)
     }
 
     private val viewModel: OfferViewModel by lazy {
@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getOfferData()
 
         viewModel.offer.observe(this){
+            Log.d("TAG", "onCreate: $it")
             offerAdapter.setOfferList(it)
             with(recyclerView)
             {

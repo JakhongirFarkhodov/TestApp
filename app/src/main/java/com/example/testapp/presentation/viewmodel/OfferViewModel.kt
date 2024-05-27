@@ -17,13 +17,17 @@ class OfferViewModel(
     private val apiServices = ApiResponse().apiServices
     private val repository = OfferRepositoryImpl(dataBase, apiServices)
     private val getListOfOfferUseCase = GetListOfOfferUseCase(repository)
+    private var isLoaded = false
 
     val offer:LiveData<List<Offer>>
         get() = repository.offer_list
 
 
     fun getOfferData(){
-        getListOfOfferUseCase.invoke()
+        if (!isLoaded) {
+            getListOfOfferUseCase.invoke()
+            isLoaded = true
+        }
     }
 
 
