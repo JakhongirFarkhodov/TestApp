@@ -35,7 +35,7 @@ class OfferRepositoryImpl(
             }
             catch (e:Exception)
             {
-
+                Log.d("TAG", "getListOfOffers: Internet connection is not available")
             }
 
             dataBase.offer_dao().insertOffer(mapper.offerResponseToOfferEntity(offerResponse))
