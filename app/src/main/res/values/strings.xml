@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TestApp</string>
+    <string name="name">Name: </string>
+    <string name="brand">Brand: </string>
+    <string name="category">Category: </string>
+    <string name="merchant">Merchant: </string>
+</resources>
